@@ -1,0 +1,23 @@
+{
+  "name": "thezmi/output-formats",
+  "description": "Format for output content (show as phone, amount, date or others formats)",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/theZMI/components__imageOrientationFix",
+  "authors": [
+    {
+      "name": "theZMI",
+      "homepage": "https://github.com/theZMI",
+      "email": "zmigpost@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php" : ">=7.1"
+  },
+  "autoload": {
+    "files": [
+      "src/fix_orientation.php"
+    ]
+  }
+}
