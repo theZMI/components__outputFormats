@@ -88,7 +88,7 @@ class OutputFormats
         return floatval($ret);
     }
 
-    function mobilePhone(string $phone): string
+    public static function mobilePhone(string $phone): string
     {
         $part_1 = substr($phone, 0, 2);
         $part_2 = substr($phone, 2, 3);
