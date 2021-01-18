@@ -95,6 +95,7 @@ class OutputFormats
         $part_3 = substr($phone, 5, 3);
         $part_4 = substr($phone, 8, 2);
         $part_5 = substr($phone, 10, 2);
+
         return "{$part_1}({$part_2}){$part_3}-{$part_4}-{$part_5}";
     }
 }
