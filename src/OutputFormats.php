@@ -35,9 +35,9 @@ class OutputFormats
         return $timestamp ? ("<nobr>" . date('d-m-Y', $timestamp) . "</nobr>") : '';
     }
 
-    public static function dateTime(int $timestamp): string
+    public static function dateTime(int $timestamp, $withSeconds = true): string
     {
-        return $timestamp ? ("<nobr>" . date('d-m-Y H:i:s', $timestamp) . "</nobr>") : '';
+        return $timestamp ? ("<nobr>" . date('d-m-Y H:i' . ($withSeconds ? ':s' : ''), $timestamp) . "</nobr>") : '';
     }
 
     public static function fromDate(string $date): int
