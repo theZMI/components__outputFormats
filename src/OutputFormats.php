@@ -50,10 +50,10 @@ class OutputFormats
         return $timestamp ? date('d-m-Y', $timestamp) : '';
     }
 
-    public static function amount(float $amount, string $currency = 'RUB'): string
+    public static function amount(float $amount, string $currency = '₽'): string
     {
         $ret = number_format($amount, 2, ',', ' ');
-        $ret = "<nobr>{$ret} <span class='fa fa-rub'></span></nobr>";
+        $ret = "<nobr>{$ret} {$currency}</nobr>";
 
         return $ret;
     }
