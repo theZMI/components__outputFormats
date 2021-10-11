@@ -58,7 +58,7 @@ class OutputFormats
         ];
         $monthName = $months[date('n', $timestamp)] ?? '-';
         $year      = date('Y', $timestamp);
-        $withYear  = date('Y') === $year;
+        $withYear  = date('Y') !== $year;
         $day       = date('d', $timestamp);
         $seconds   = date('s', $timestamp);
 
