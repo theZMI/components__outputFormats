@@ -40,6 +40,31 @@ class OutputFormats
         return $timestamp ? ("<nobr>" . date('d-m-Y H:i' . ($withSeconds ? ':s' : ''), $timestamp) . "</nobr>") : '';
     }
 
+    public static function dateTimeRu(int $timestamp, $withSeconds = true): string
+    {
+        $months    = [
+            '1'  => 'Января',
+            '2'  => 'Февраля',
+            '3'  => 'Марта',
+            '4'  => 'Апреля',
+            '5'  => 'Мая',
+            '6'  => 'Июня',
+            '7'  => 'Июля',
+            '8'  => 'Августа',
+            '9'  => 'Сентября',
+            '10' => 'Октября',
+            '11' => 'Ноября',
+            '12' => 'Декабря',
+        ];
+        $monthName = $months[date('m', $timestamp)];
+        $year      = date('Y', $timestamp);
+        $withYear  = date('Y') === $year;
+        $day       = date('d', $timestamp);
+        $seconds   = date('s', $timestamp);
+
+        return $timestamp ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year}" : "") . date(' H:i', $timestamp) . ($withSeconds ? " {$seconds}" : "") . "</nobr>") : '';
+    }
+
     public static function fromDate(string $date): int
     {
         return $date ? strtotime($date . " UTC") : 0;
@@ -90,7 +115,7 @@ class OutputFormats
 
     public static function mobilePhone(string $phone): string
     {
-        $phone = $phone[0] == '+' ? $phone : "+{$phone}";
+        $phone  = $phone[0] == '+' ? $phone : "+{$phone}";
         $part_1 = substr($phone, 0, 2);
         $part_2 = substr($phone, 2, 3);
         $part_3 = substr($phone, 5, 3);
