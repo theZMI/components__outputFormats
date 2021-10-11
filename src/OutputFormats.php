@@ -62,7 +62,9 @@ class OutputFormats
         $day       = date('d', $timestamp);
         $seconds   = date('s', $timestamp);
 
-        return $timestamp ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year}" : "") . date(' H:i', $timestamp) . ($withSeconds ? " {$seconds}" : "") . "</nobr>") : '';
+        return $timestamp
+            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year}" : "") . date(' в H:i', $timestamp) . ($withSeconds ? " {$seconds}" : "") . "</nobr>")
+            : '';
     }
 
     public static function fromDate(string $date): int
