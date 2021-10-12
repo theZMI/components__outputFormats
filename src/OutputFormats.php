@@ -63,7 +63,7 @@ class OutputFormats
         $seconds   = date('s', $timestamp);
 
         return $timestamp
-            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} г." : "") . date(' в H:i', $timestamp) . ($withSeconds ? " {$seconds}" : "") . "</nobr>")
+            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} г." : "") . date(' в H:i', $timestamp) . ($withSeconds ? ":{$seconds}" : "") . "</nobr>")
             : '';
     }
 
