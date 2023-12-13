@@ -80,9 +80,7 @@ class OutputFormats
     public static function amount(float $amount, string $currency = '₽'): string
     {
         $ret = number_format($amount, 2, ',', ' ');
-        $ret = "<nobr>{$ret} {$currency}</nobr>";
-
-        return $ret;
+        return "<nobr>{$ret} {$currency}</nobr>";
     }
 
     public static function fromAmount(string $amount): float
@@ -99,9 +97,7 @@ class OutputFormats
     public static function number(float $value): string
     {
         $ret = number_format($value, 2, '.', '');
-        $ret = "<nobr>{$ret}</nobr>";
-
-        return $ret;
+        return "<nobr>{$ret}</nobr>";
     }
 
     public static function fromNumber(string $value): float
@@ -117,6 +113,10 @@ class OutputFormats
 
     public static function mobilePhone(string $phone): string
     {
+        if (strlen($phone) < 11) {
+            return '';
+        }
+
         $phone  = $phone[0] == '+' ? $phone : "+{$phone}";
         $part_1 = substr($phone, 0, 2);
         $part_2 = substr($phone, 2, 3);
