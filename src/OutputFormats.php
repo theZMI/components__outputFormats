@@ -7,6 +7,21 @@
  */
 class OutputFormats
 {
+    public static $months = [
+        1  => 'Января',
+        2  => 'Февраля',
+        3  => 'Марта',
+        4  => 'Апреля',
+        5  => 'Мая',
+        6  => 'Июня',
+        7  => 'Июля',
+        8  => 'Августа',
+        9  => 'Сентября',
+        10 => 'Октября',
+        11 => 'Ноября',
+        12 => 'Декабря',
+    ];
+
     /**
      * Для вывода числа чего-либо с падежом
      *
@@ -40,31 +55,30 @@ class OutputFormats
         return $timestamp ? ("<nobr>" . date('d-m-Y H:i' . ($withSeconds ? ':s' : ''), $timestamp) . "</nobr>") : '';
     }
 
-    public static function dateTimeRu(int $timestamp, $withSeconds = true): string
+    public static function dateTimeLang(int $timestamp, $withSeconds = true, $langData = NULL): string
     {
-        $months    = [
-            1  => 'Января',
-            2  => 'Февраля',
-            3  => 'Марта',
-            4  => 'Апреля',
-            5  => 'Мая',
-            6  => 'Июня',
-            7  => 'Июля',
-            8  => 'Августа',
-            9  => 'Сентября',
-            10 => 'Октября',
-            11 => 'Ноября',
-            12 => 'Декабря',
-        ];
-        $monthName = $months[date('n', $timestamp)] ?? '-';
+        $langData  = array_merge(
+            [
+                'months'      => self::$months,
+                'year_ending' => 'г.',
+                'in_time'     => ' в ',
+            ],
+            $langData
+        );
+        $monthName = $langData['months'][date('n', $timestamp)] ?? '-';
         $year      = date('Y', $timestamp);
         $withYear  = date('Y') !== $year;
         $day       = date('d', $timestamp);
         $seconds   = date('s', $timestamp);
 
         return $timestamp
-            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} г." : "") . date(' в H:i', $timestamp) . ($withSeconds ? ":{$seconds}" : "") . "</nobr>")
+            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} {$langData['year_ending']}" : "") . $langData['in_time'] .date("H:i", $timestamp) . ($withSeconds ? ":{$seconds}" : "") . "</nobr>")
             : '';
+    }
+
+    public static function dateTimeRu(int $timestamp, $withSeconds = true): string
+    {
+        return OutputFormats::dateTimeLang($timestamp, $withSeconds);
     }
 
     public static function fromDate(string $date): int
