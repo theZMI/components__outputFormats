@@ -91,9 +91,9 @@ class OutputFormats
         return $timestamp ? date('d-m-Y', $timestamp) : '';
     }
 
-    public static function amount(float $amount, string $currency = '₽'): string
+    public static function amount(float $amount, string $currency = '₽', $decimals = 2): string
     {
-        $ret = number_format($amount, 2, ',', ' ');
+        $ret = number_format($amount, $decimals, '.', ' ');
         return "<nobr>{$ret} {$currency}</nobr>";
     }
 
