@@ -63,7 +63,7 @@ class OutputFormats
                 'year_ending' => 'г.',
                 'at_time'     => ' в ',
             ],
-            $langData
+            $langData ?: []
         );
         $monthName = $langData['months'][date('n', $timestamp)] ?? '-';
         $year      = date('Y', $timestamp);
