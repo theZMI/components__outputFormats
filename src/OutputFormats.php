@@ -61,7 +61,7 @@ class OutputFormats
             [
                 'months'      => self::$months,
                 'year_ending' => 'г.',
-                'in_time'     => ' в ',
+                'at_time'     => ' в ',
             ],
             $langData
         );
@@ -72,7 +72,7 @@ class OutputFormats
         $seconds   = date('s', $timestamp);
 
         return $timestamp
-            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} {$langData['year_ending']}" : "") . $langData['in_time'] .date("H:i", $timestamp) . ($withSeconds ? ":{$seconds}" : "") . "</nobr>")
+            ? ("<nobr>{$day} {$monthName} " . ($withYear ? " {$year} {$langData['year_ending']}" : "") . $langData['at_time'] .date("H:i", $timestamp) . ($withSeconds ? ":{$seconds}" : "") . "</nobr>")
             : '';
     }
 
