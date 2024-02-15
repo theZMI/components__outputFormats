@@ -85,13 +85,10 @@ class OutputFormats
 
     public static function fromAmount(string $amount): float
     {
-        $pairs = [
+        return floatval( strtr($amount, [
             " " => "",
             "," => ".",
-        ];
-        $ret   = strtr($amount, $pairs);
-
-        return floatval($ret);
+        ]) );
     }
 
     public static function number(float $value): string
@@ -102,13 +99,10 @@ class OutputFormats
 
     public static function fromNumber(string $value): float
     {
-        $pairs = [
+        return floatval( strtr($value, [
             " " => "",
             "," => ".",
-        ];
-        $ret   = strtr($value, $pairs);
-
-        return floatval($ret);
+        ]) );
     }
 
     public static function mobilePhone(string $phone): string
