@@ -61,7 +61,7 @@ class OutputFormats
             [
                 'months'      => self::$months,
                 'year_ending' => 'г.',
-                'at_time'     => ' в ',
+                'at_time'     => 'в ',
             ],
             $langData ?: []
         );
